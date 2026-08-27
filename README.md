@@ -733,7 +733,7 @@ Products are shipped.
 Stories are remembered.
 <div align="center"> <img src="assets/web.png" width="80" alt="Web">
 🕷️ SPYDY
-TIRU VENTKATESH
+TIRU VENKATESH
 
 AI ENGINEER
 
