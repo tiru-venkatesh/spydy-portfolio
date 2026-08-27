@@ -17,7 +17,10 @@ html, body {
   color: var(--bone);
   font-family: var(--body);
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
+
+.panel { scroll-margin-top: 80px; }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -31,6 +34,290 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
   inset: 0;
   pointer-events: none;
   z-index: 50;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.1rem 5vw;
+  background: rgba(10,10,10,0.35);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(215,38,61,0.15);
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+
+.navbar.nav-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.navbar.scrolled {
+  background: rgba(10,10,10,0.75);
+  border-color: rgba(215,38,61,0.3);
+  padding: 0.8rem 5vw;
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+  color: var(--bone);
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.2rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  position: relative;
+  color: var(--bone);
+  opacity: 0.8;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--crimson);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  color: var(--crimson);
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.nav-socials {
+  display: flex;
+  gap: 1.3rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--web-grey);
+  flex-shrink: 0;
+}
+
+.nav-socials a { transition: color 0.2s ease; }
+.nav-socials a:hover { color: var(--crimson); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 71;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--bone);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .nav-socials { display: none; }
+}
+
+@media (max-width: 700px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1rem;
+    background: rgba(10,10,10,0.97);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ---------- EMAIL CTA (contact section) ---------- */
+.email-cta {
+  display: inline-block;
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 5vw, 2.8rem);
+  color: var(--crimson);
+  letter-spacing: 0.01em;
+  margin: 1.5rem 0 2rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s ease, opacity 0.25s ease;
+  word-break: break-word;
+}
+
+.email-cta:hover { border-color: var(--crimson); opacity: 0.9; }
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  border-top: 1px solid rgba(215,38,61,0.18);
+  padding: 3rem 6vw 2rem;
+  background: var(--true-black);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-brand p {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--web-grey);
+  margin-top: 0.6rem;
+}
+
+.footer-links,
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.footer-links a,
+.footer-socials a {
+  color: var(--bone);
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.footer-links a:hover,
+.footer-socials a:hover {
+  opacity: 1;
+  color: var(--crimson);
+}
+
+.footer-copy {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--web-grey);
+  opacity: 0.6;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .footer-inner { flex-direction: column; gap: 1.8rem; }
+}
+.music-toggle {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 60;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(215,38,61,0.5);
+  background: rgba(10,10,10,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.music-toggle:hover {
+  border-color: var(--crimson);
+  background: rgba(20,10,12,0.85);
+  transform: scale(1.06);
+}
+
+/* two bars = "playing" (equalizer-ish), morphs to a single bar (mute) when stopped */
+.music-toggle-icon {
+  position: relative;
+  width: 16px;
+  height: 14px;
+}
+
+.music-toggle-icon::before,
+.music-toggle-icon::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  background: var(--crimson);
+  border-radius: 1px;
+  transition: height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+  animation: musicBar 0.9s ease-in-out infinite alternate;
+}
+
+.music-toggle-icon::before { left: 2px; height: 14px; animation-delay: 0s; }
+.music-toggle-icon::after { right: 2px; height: 8px; animation-delay: 0.3s; }
+
+@keyframes musicBar {
+  0% { transform: scaleY(0.5); }
+  100% { transform: scaleY(1); }
+}
+
+.music-toggle.muted .music-toggle-icon::before,
+.music-toggle.muted .music-toggle-icon::after {
+  height: 4px;
+  background: var(--web-grey);
+  animation: none;
+  transform: scaleY(1);
+}
+
+@media (max-width: 640px) {
+  .music-toggle { bottom: 1.1rem; right: 1.1rem; width: 42px; height: 42px; }
 }
 
 #story { position: relative; }
@@ -56,6 +343,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
   perspective: 1600px;
 }
 
@@ -63,10 +352,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center 22%;
   opacity: 0;
   filter: blur(0px);
-  transform: scale(1.06);
+  transform: scale(1);
   backface-visibility: hidden;
   will-change: opacity, filter, transform;
 }
@@ -100,6 +389,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
   z-index: 2;
   margin-top: 46vh;
   text-align: center;
+  display: grid;
+}
+
+.frame-slot {
+  grid-area: 1 / 1;
 }
 
 .eyebrow {
@@ -185,12 +479,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
 }
 
 .corner-bl {
-  bottom: 9%;
+  bottom: max(15%, 100px);
   left: 5%;
 }
 
 .corner-br {
-  bottom: 9%;
+  bottom: max(15%, 100px);
   right: 5%;
   text-align: right;
 }
@@ -198,9 +492,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
 .dialogue {
   font-family: var(--body);
   font-style: italic;
-  font-size: clamp(0.85rem, 1.6vw, 1.05rem);
-  color: var(--crimson);
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
   line-height: 1.4;
+  color: var(--crimson);
 }
 
 /* boxed video frame — right column, solid defined box (not a faint see-through outline) */
@@ -243,7 +537,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--crimson); outli
   z-index: 1;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 .web-strand {
