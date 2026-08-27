@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiru — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ambient web-strand cursor trail canvas -->
+<canvas id="web-trail"></canvas>
+
+<div id="story">
+
+  <!-- ============ 01 — LANDING ============ -->
+  <section class="panel" id="landing">
+    <!-- 3-photo crossfade background — drop your own stills in /assets, see assets/README.md -->
+    <div class="landing-bg">
+      <div class="bg-layer bg-1" style="background-image:url('assets/landing-1.jpg')"></div>
+      <div class="bg-layer bg-2" style="background-image:url('assets/landing-2.jpg')"></div>
+      <div class="bg-layer bg-3" style="background-image:url('assets/landing-3.jpg')"></div>
+      <div class="bg-grade"></div>
+    </div>
+
+    <div class="frame-stack">
+      <p class="frame frame-1 eyebrow">IDENTITY</p>
+      <h1 class="frame frame-1 huge">TIRU</h1>
+
+      <p class="mix-text">// COMPILING IDENTITY</p>
+
+      <p class="frame frame-2 eyebrow">ROLE</p>
+      <h2 class="frame frame-2 huge">AI ENGINEER</h2>
+
+      <p class="frame frame-3 statement ready-hover" id="landing-ready">ARE YOU READY?</p>
+    </div>
+
+    <!-- corner text layer — poster-style composition, riding the same 3 frames -->
+    <div class="frame-decor">
+      <p class="frame frame-1 corner-tl">TIRU VENKATESH</p>
+      <p class="frame frame-1 corner-br dialogue">&ldquo;With great code comes great responsibility.&rdquo;</p>
+
+      <p class="frame frame-2 corner-tr">FULL STACK &times; AI</p>
+      <p class="frame frame-2 corner-bl dialogue">&ldquo;Small script. Big impact.&rdquo;</p>
+
+      <p class="frame frame-3 corner-bl dialogue">&ldquo;Debugging by night. Shipping by day.&rdquo;</p>
+    </div>
+
+    <p class="scroll-cue">SCROLL</p>
+  </section>
+
+  <!-- ============ 02 — ABOUT + WEB TRANSITION (side by side) ============ -->
+  <section class="panel split" id="about">
+    <!-- background accent line, spans behind both columns -->
+    <svg class="web-pull-svg" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+      <path class="web-strand" d="M -50 300 Q 500 300 1050 300" fill="none" stroke="var(--crimson)" stroke-width="2"/>
+    </svg>
+
+    <div class="about-copy">
+      <p class="eyebrow">02 — ABOUT ME</p>
+      <h2 class="section-title">ABOUT ME</h2>
+      <p class="body-text">
+        Second-year CSE student at UCEN who ships instead of waits. I build
+        AI-powered products under Tiru Builds — from civic-tech platforms
+        like Civic-IQ to infra work on RealMind AI — and I compete because
+        hackathons compress a year of learning into a weekend.
+      </p>
+    </div>
+
+    <!-- drop your Gemini web-shooter clip here as assets/web-shooter.mp4 —
+         mix-blend-mode: screen means a BLACK video background will vanish
+         automatically and only the bright web/glow shows on our black bg.
+         If your export has a colored bg instead of black, tell me and I'll
+         switch this to a mask/alpha approach instead. -->
+    <div class="web-shooter-frame">
+      <video class="web-shooter-video" autoplay muted loop playsinline>
+        <source src="assets/web-shooter.mp4" type="video/mp4">
+      </video>
+      <!-- covers the baked-in Gemini watermark in the video's bottom-right corner -->
+      <div class="watermark-cover" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 — PROJECTS ============ -->
+  <section class="panel pull-section" id="projects">
+    <!-- real photo background: dark wood "DREAM BIG" (Randy Tarampi, Unsplash
+         License — free to use). Graded to match the site's black/crimson
+         palette, sits behind the original web-line SVG art. -->
+    <div class="projects-photo-bg" style="background-image:url('assets/dream-big.jpg')"></div>
+    <div class="projects-photo-grade"></div>
+
+    <!-- original full-bleed background texture: web-line pattern + abstract
+         swinging silhouette, drawn in the same red-ink comic style as the
+         corner sketches — NOT the licensed character -->
+    <svg class="projects-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g stroke="var(--crimson)" stroke-width="2" fill="none" opacity="0.5">
+        <path d="M0 0 L1200 800 M1200 0 L0 800 M600 0 L600 800 M0 400 L1200 400"/>
+        <path d="M600 400 C 500 300, 500 150, 600 0 M600 400 C 700 300, 700 150, 600 0 M600 400 C 500 500, 500 650, 600 800 M600 400 C 700 500, 700 650, 600 800 M600 400 C 450 350, 300 350, 0 400 M600 400 C 450 450, 300 450, 0 400 M600 400 C 750 350, 900 350, 1200 400 M600 400 C 750 450, 900 450, 1200 400"/>
+        <circle cx="600" cy="400" r="120" opacity="0.7"/>
+        <circle cx="600" cy="400" r="240" opacity="0.5"/>
+        <circle cx="600" cy="400" r="360" opacity="0.3"/>
+      </g>
+      <!-- abstract climbing/swinging figure, geometric only, no licensed suit -->
+      <g stroke="var(--bone)" stroke-width="4" stroke-linecap="round" opacity="0.35">
+        <line x1="930" y1="120" x2="930" y2="200"/>
+        <circle cx="930" cy="216" r="16" fill="var(--true-black)" stroke="var(--bone)"/>
+        <path d="M930 232 L930 320"/>
+        <path d="M930 250 L870 290"/>
+        <path d="M930 250 L990 280"/>
+        <path d="M930 320 L890 400"/>
+        <path d="M930 320 L970 410"/>
+      </g>
+    </svg>
+
+    <img class="web-corner pos-tl sz-lg" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <img class="web-corner pos-br sz-md" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <p class="eyebrow">03 — PROJECTS</p>
+    <h2 class="section-title">PROJECTS</h2>
+    <div class="project-grid" id="project-grid">
+      <div class="project-card">
+        <p class="project-index">01</p>
+        <h3 class="project-title">RealMind AI</h3>
+        <p class="project-blurb">
+          An AI-focused product ecosystem exploring practical applications of
+          AI, LLMs, inference systems, and intelligent software — including
+          an AI inference logging platform that goes beyond just calling an
+          LLM API into the infrastructure layer around AI applications.
+        </p>
+        <div class="project-tags">
+          <span>AI Engineering</span><span>Product Building</span><span>Infrastructure</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-index">02</p>
+        <h3 class="project-title">Civic-IQ</h3>
+        <p class="project-blurb">
+          An AI-powered civic intelligence platform. Traditional complaint
+          systems collect issues but don't help authorities know which ones
+          deserve attention first — Civic-IQ scores, deduplicates, and routes
+          complaints so priority is intelligent, not first-come-first-serve.
+        </p>
+        <p class="project-stack">React · Vite · FastAPI · Python · Groq/LLMs · Firebase · Google Maps</p>
+        <div class="project-tags">
+          <span>Priority Scoring</span><span>Duplicate Detection</span><span>Dept. Routing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 — WEB-PULL SKILLS ============ -->
+  <section class="panel pull-section" id="skills">
+    <!-- full background photo: desaturated + crimson-tinted, cropped toward
+         the top so "UNDERSTANDING" text isn't the focal point -->
+    <!-- confined to bottom-right corner, not full-bleed -->
+    <div class="skills-corner-visual">
+      <img src="assets/bgskills.png" alt="">
+    </div>
+
+    <p class="eyebrow">04 — SKILLS</p>
+    <div class="card-rig" id="skills-rig">
+      <div class="skill-card" data-label="PYTHON"><span>PYTHON</span></div>
+      <div class="skill-card" data-label="AI / ML"><span>AI / ML</span></div>
+      <div class="skill-card" data-label="LLMS"><span>LLMs</span></div>
+      <div class="skill-card" data-label="FULL STACK"><span>FULL STACK</span></div>
+      <div class="skill-card" data-label="REACT"><span>REACT</span></div>
+      <div class="skill-card" data-label="RAG / AGENTS"><span>RAG / AGENTS</span></div>
+    </div>
+  </section>
+
+  <section class="panel pull-section" id="interests">
+    <img class="web-corner pos-tl sz-md" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <img class="web-corner pos-br sz-lg" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <p class="eyebrow">INTERESTS</p>
+    <div class="card-rig" id="interests-rig">
+      <div class="skill-card interest" data-label="AI"><span>AI</span></div>
+      <div class="skill-card interest" data-label="PRODUCT BUILDING"><span>PRODUCT BUILDING</span></div>
+      <div class="skill-card interest" data-label="STARTUPS"><span>STARTUPS</span></div>
+      <div class="skill-card interest" data-label="CREATIVE DEV"><span>CREATIVE DEV</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 04 — ACHIEVEMENTS GATE ============ -->
+  <section class="panel gate" id="ready-gate">
+    <img class="web-corner pos-tr sz-sm" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <img class="web-corner pos-bl sz-md" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <div class="gate-visual">
+      <img src="assets/gate-visual.jpg" alt="" />
+    </div>
+    <h2 class="ready-text" id="ready-text">ARE YOU READY?</h2>
+  </section>
+
+  <section class="panel half-page" id="achievements">
+    <img class="web-corner pos-tl sz-sm" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <img class="web-corner pos-br sz-md" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <p class="eyebrow">05 — ACHIEVEMENTS</p>
+    <h2 class="section-title">ACHIEVEMENTS</h2>
+    <div class="achv-grid">
+      <div class="achv-item">
+        <span class="achv-num">01</span>
+        <span class="achv-title">Civic-IQ</span>
+        <span class="achv-sub">Hackathon-built AI civic intelligence platform — priority scoring, duplicate detection, dept. routing</span>
+      </div>
+      <div class="achv-item">
+        <span class="achv-num">02</span>
+        <span class="achv-title">RealMind AI</span>
+        <span class="achv-sub">Founder — AI inference logging &amp; infra layer for real LLM applications</span>
+      </div>
+      <div class="achv-item">
+        <span class="achv-num">03</span>
+        <span class="achv-title">Tiru Builds</span>
+        <span class="achv-sub">Documenting real product builds in public — not tutorials, shipped work</span>
+      </div>
+      <div class="achv-item">
+        <span class="achv-num">04</span>
+        <span class="achv-title">CSE @ UCEN</span>
+        <span class="achv-sub">2nd-year B.Tech, Class of 2029 — building toward AI Engineer full-time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 — FINAL ============ -->
+  <section class="panel quiet" id="final">
+    <img class="web-corner pos-tr sz-lg" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <img class="web-corner pos-bl sz-sm" src="assets/web-sketch.png" alt="" aria-hidden="true">
+    <svg class="silhouette faded" viewBox="0 0 400 600" aria-hidden="true">
+      <line x1="200" y1="0" x2="200" y2="140" stroke="var(--crimson)" stroke-width="2"/>
+      <circle cx="200" cy="160" r="18" fill="var(--true-black)" stroke="var(--bone)" stroke-width="2"/>
+    </svg>
+    <p class="support-tag">SUPPORT <span class="crimson">@LOCKINTIRU</span></p>
+    <div class="socials">
+      <a href="https://github.com/tiru-venkatesh" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/tiru-venkatesh-830907202/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://instagram.com/lockintiru" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:imvvtv@gmail.com">Email</a>
+    </div>
+    <p class="sign-off">See you on the next build.</p>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
